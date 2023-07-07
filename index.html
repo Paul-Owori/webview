@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Front Camera Access</title>
+    <style>
+      video {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="videoElement" autoplay></video>
+
+    <script>
+      // Access the front camera stream
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: 'user' } })
+        .then((stream) => {
+          const videoElement = document.getElementById('videoElement');
+          videoElement.srcObject = stream;
+        })
+        .catch((error) => {
+          console.error('Error accessing front camera:', error);
+        });
+    </script>
+  </body>
+</html>
